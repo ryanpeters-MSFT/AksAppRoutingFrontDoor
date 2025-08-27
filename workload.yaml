@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerdemo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dockerdemo
+  template:
+    metadata:
+      labels:
+        app: dockerdemo
+    spec:
+      containers:
+      - name: dockerdemo
+        image: binarydad/dockerdemo:latest
+        resources: {}
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dockerdemo
+spec:
+  selector:
+    app: dockerdemo
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP

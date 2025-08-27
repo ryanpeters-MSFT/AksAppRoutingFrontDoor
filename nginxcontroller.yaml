@@ -1,0 +1,20 @@
+apiVersion: approuting.kubernetes.azure.com/v1alpha1
+kind: NginxIngressController
+metadata:
+  name: internal
+spec:
+  controllerNamePrefix: nginx-internal
+  ingressClassName: nginx-internal
+  loadBalancerAnnotations:
+    # Optional ONLY IF AnnotationControlled nginx profile type
+    #service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-pls-create: "true"
+    service.beta.kubernetes.io/azure-pls-name: "akspls"
+    service.beta.kubernetes.io/azure-pls-auto-approval: "*"
+    # Optional: Specify subnet for the load balancer
+    #service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ingress-subnet"
+    # Optional: Set static IP
+    #service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.1.1.100"
+    # Optional: Configure PLS with custom settings
+    #service.beta.kubernetes.io/azure-pls-ip-configuration-subnet: "pls-subnet"
+    

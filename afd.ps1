@@ -28,8 +28,6 @@ $privateLinkId = az network private-link-service show `
     -n akspls `
     -o tsv --query id
 
-$privateLinkId
-
 # create the origin group
 az afd origin-group create `
     -g $group `
@@ -73,3 +71,5 @@ az afd route create `
     --patterns-to-match "/*" `
     --forwarding-protocol MatchRequest `
     --link-to-default-domain Enabled
+
+"Website will be available in a few minutes at http://$hostName"

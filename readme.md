@@ -62,5 +62,6 @@ az network private-link-service show -g mc_rg-aks-ingress2_ingresscluster_eastus
 ## Links
 - [Connect Azure Front Door Premium to an App Service (Web App or Function App) origin with Private Link](https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-enable-private-link-web-app?source=recommendations&pivots=front-door-cli)
 - [Secure your Origin with Private Link in Azure Front Door Premium](https://learn.microsoft.com/en-us/azure/frontdoor/private-link)
+- [End to End TLS Encryption with AKS and AFD](https://azureglobalblackbelts.com/2024/11/05/afd-aks-ingress-tls.html) (adds TLS using Key Vault CSI driver)
 - [Azure LoadBalancer](https://cloud-provider-azure.sigs.k8s.io/topics/loadbalancer/#loadbalancer-annotations)
 - [Origins and origin groups in Azure Front Door](https://learn.microsoft.com/en-us/azure/frontdoor/origin?pivots=front-door-standard-premium)

@@ -1,4 +1,4 @@
-# AKS Managed App Routing with Private Link Service
+# AKS Managed App Routing with Private Link Service and Azure Front Door
 
 This sample deployment creates an AKS cluster using managed the [application routing add-on (nginx)](https://learn.microsoft.com/en-us/azure/aks/app-routing). It deploys a sample application that exposes a private load balancer and uses the private link service to allow public connectivity from Azure Front Door.
 

@@ -17,7 +17,7 @@ Modify any resource names in the [vars.ps1](./vars.ps1) file as needed, such as 
 Invoke [aks.ps1](./aks.ps1) to create the AKS cluster and authenticate `kubectl`. The application routing add-on will create an `Internal` nginx instance configured to expose an IP on the associated subnet (additional options exist on the `NginxIngressController` used for this demo to control the location of the subnet and IP address).
 
 ```powershell
-# run setup
+# run the aks deployment
 .\aks.ps1
 ```
 
@@ -35,11 +35,18 @@ When [nginxcontroller.yaml](./nginxcontroller.yaml) is deployed, the `service.be
 
 ### Create Azure Front Door
 
-When the cluster and the workload are deployed, you should see a private link service created. You can list the PLS instances using the command below.
+When the cluster and the workload are deployed, you should see a private link service created. You can list the PLS instances using the command below. The name of the PLS instance should be the name of the `service.beta.kubernetes.io/azure-pls-name` annotation in the `NginxIngressController` resource.
 
 ```powershell
 # view the PLS instances
 az network private-link-service list -o table
+```
+
+Once this is verified, run the setup for Azure Front Door to configure the policy, route, and configure the origin to use the PLS instance. 
+
+```powershell
+# run the AFD deployment
+.\afd.ps1
 ```
 
 ## Handy Commands
@@ -55,4 +62,5 @@ az network private-link-service show -g mc_rg-aks-ingress2_ingresscluster_eastus
 ## Links
 - [Connect Azure Front Door Premium to an App Service (Web App or Function App) origin with Private Link](https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-enable-private-link-web-app?source=recommendations&pivots=front-door-cli)
 - [Secure your Origin with Private Link in Azure Front Door Premium](https://learn.microsoft.com/en-us/azure/frontdoor/private-link)
+- [Azure LoadBalancer](https://cloud-provider-azure.sigs.k8s.io/topics/loadbalancer/#loadbalancer-annotations)
 - [Origins and origin groups in Azure Front Door](https://learn.microsoft.com/en-us/azure/frontdoor/origin?pivots=front-door-standard-premium)

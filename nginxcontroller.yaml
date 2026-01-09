@@ -6,8 +6,7 @@ spec:
   controllerNamePrefix: nginx-internal
   ingressClassName: nginx-internal
   loadBalancerAnnotations:
-    # Optional ONLY IF AnnotationControlled nginx profile type
-    #service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     service.beta.kubernetes.io/azure-pls-create: "true"
     service.beta.kubernetes.io/azure-pls-name: "akspls"
     service.beta.kubernetes.io/azure-pls-auto-approval: "*"
